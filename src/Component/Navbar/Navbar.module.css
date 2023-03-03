@@ -1,0 +1,8 @@
+.wrapper{
+    height: 7vh;
+    border: 1px solid red;
+}
+
+.navbar{
+    display: flex;
+}
