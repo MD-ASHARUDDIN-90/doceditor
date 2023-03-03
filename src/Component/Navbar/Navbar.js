@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { AiOutlineHighlight } from "react-icons/ai";
-import { BsLink } from "react-icons/bs";
+import { BsEmojiSmile, BsLink } from "react-icons/bs";
 
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import { icons, fontSizeList, fontFamilyList } from "../../Fixture/Icons";
+import { icons, fontSizeList, fontFamilyList ,emojiList} from "../../Fixture/Icons";
 import style from "./Navbar.module.css";
 import { RxImage } from "react-icons/rx";
 export default function Navbar() {
+  const [emoji, setEmoji] = useState("&#128514;");
   const [fontSize, setFontSize] = useState("Font Size");
   const [fontName, setFontName] = useState("Font Style");
-  const [color, setColor] = useState("black");
+  const [color, setColor] = useState("#000000");
   const [higlightColor, setHiglightColor] = useState("#000000");
 
   const [link, setLink] = useState("");
@@ -20,6 +21,7 @@ export default function Navbar() {
   }
   function handleFontColor(e) {
     setColor(e.target.value);
+    console.log(e.target.value)
     document.execCommand("foreColor", false, e.target.value);
   }
   function handleFontSize(e) {
@@ -34,6 +36,18 @@ export default function Navbar() {
     setFontName(e.target.value);
     document.execCommand("fontName", false, e.target.value);
     console.log(e.target.value);
+  }
+  function handleEmoji(e) {
+    setEmoji(e.target.value);
+    
+    if(e.target.value === "Smile"){
+    document.execCommand("insertHTML", false, "&#128514");
+    }else if(e.target.value === "Thumbs Up"){
+        document.execCommand("insertHTML", false, "&#128077");
+    }else if(e.target.value === "Thumbs Down"){
+        document.execCommand("insertHTML", false, "&#128078");
+    }
+    console.log(e.target.value)
   }
 
   function handleOpen(value) {
@@ -54,12 +68,22 @@ export default function Navbar() {
           </button>
         ))}
      
-          <select id="fontStyle" onChange={handleFontStyle}>
+
+        <div className={style.fontStyleBox}>
+        <select onChange={handleEmoji}>
+        <option>Emoji</option>
+        {emojiList.map((x,i)=><option key={i}>{x.icon}</option>)}
+        </select>
+        </div>
+
+        <div className={style.fontStyleBox}>
+          <select className={style.fontStyle} id="fontStyle" onChange={handleFontStyle}>
             <option>{fontName}</option>
             {fontFamilyList.map((x) => (
               <option key={x}>{x}</option>
             ))}
           </select>
+          </div>
    
 
         <button>

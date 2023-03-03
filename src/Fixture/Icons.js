@@ -8,9 +8,10 @@ import {
   MdRedo,
   MdUndo,
 } from "react-icons/md";
-import {  FaRemoveFormat} from "react-icons/fa";
+import { FaRemoveFormat } from "react-icons/fa";
 import { RiSubscript, RiSuperscript } from "react-icons/ri";
 import { GoListOrdered, GoListUnordered } from "react-icons/go";
+import { BsEmojiSmile } from "react-icons/bs";
 export const icons = [
   {
     icon: <MdUndo />,
@@ -90,6 +91,40 @@ export const fontFamilyList = [
   "emoji",
   "math",
   "fangsong",
+  "Georgia",
+  "Times New Roman",
+  "Impact",
 ];
 
-export const headingList = ["H1", "H2", "H3", "H4", "H5", "H6"];
+// export const emojiList = [
+//   <option>&#128514;</option>,
+// <option>&#128512;</option>,
+// <option>&#128517;</option>,
+// <option>&#128525;</option>,
+// <option>&#128540;</option>,
+// <option>&#128545;</option>,
+// <option>&#128547;</option>,
+// <option>&#128579;</option>,
+// <option>&#128561;</option>,
+// <option>&#128557;</option>,
+// <option>&#128536;</option>,
+// <option>&#128542;</option>,
+// <option>&#128534;</option>,
+// <option>&#128076;</option>,
+// <option>&#128077;</option>,
+// <option>&#128078;</option>,
+// ];
+export const emojiList = [
+  {
+    icon : "Smile",
+    value : "&#128514",
+  } ,
+  {
+    icon : "Thumbs Up",
+    value : "&#128514",
+  } ,
+  {
+    icon : "Thumbs Down",
+    value : "&#128514",
+  } ,
+];
