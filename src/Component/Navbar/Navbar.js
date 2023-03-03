@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { AiOutlineHighlight } from "react-icons/ai";
-import { GoTextSize } from "react-icons/go";
 import { BsLink } from "react-icons/bs";
-import { TfiGallery } from "react-icons/tfi";
-import { MdOutlineFormatColorText } from "react-icons/md";
+
+import { ImFontSize, ImTextColor } from "react-icons/im";
 import { icons, fontSizeList, fontFamilyList } from "../../Fixture/Icons";
 import style from "./Navbar.module.css";
+import { RxImage } from "react-icons/rx";
 export default function Navbar() {
   const [fontSize, setFontSize] = useState("Font Size");
   const [fontName, setFontName] = useState("Font Style");
   const [color, setColor] = useState("black");
-  const [higlightColor, setHiglightColor] = useState("black");
+  const [higlightColor, setHiglightColor] = useState("#000000");
 
   const [link, setLink] = useState("");
   const [show, setShow] = useState(false);
@@ -43,6 +43,7 @@ export default function Navbar() {
     }else{
         document.execCommand("insertImage", false, link);
     }
+    setLink("")
   }
   return (
     <>
@@ -52,20 +53,21 @@ export default function Navbar() {
             {element.icon}
           </button>
         ))}
-        <button>
+     
           <select id="fontStyle" onChange={handleFontStyle}>
             <option>{fontName}</option>
             {fontFamilyList.map((x) => (
               <option key={x}>{x}</option>
             ))}
           </select>
-        </button>
+   
 
         <button>
           <label htmlFor="color">
-            <MdOutlineFormatColorText />
+            <ImTextColor style={{ color : color}} />
           </label>
           <input
+             className={style.input}
             id="color"
             type="color"
             value={color}
@@ -73,9 +75,9 @@ export default function Navbar() {
           />
         </button>
 
-        <button>
+          <div className={style.fontSize}>
           <label htmlFor="fontSize">
-            <GoTextSize />
+            <span><ImFontSize  className={style.icon} /></span>
           </label>
           <select id="fontSize" onChange={handleFontSize}>
             <option>3</option>
@@ -83,13 +85,15 @@ export default function Navbar() {
               <option key={x}>{x}</option>
             ))}
           </select>
-        </button>
+          </div>
+  
 
         <button>
           <label htmlFor="highlighColor">
-            <AiOutlineHighlight />
+            <AiOutlineHighlight style={{zIndex:"1" , color : higlightColor}} />
           </label>
           <input
+          className={style.input}
             id="highlighColor"
             type="color"
             value={higlightColor}
@@ -104,7 +108,7 @@ export default function Navbar() {
         </button>
         <button onClick={()=>handleOpen("insertImage")}>
           <label htmlFor="link">
-            <TfiGallery />
+            <RxImage />
           </label>
         </button>
 

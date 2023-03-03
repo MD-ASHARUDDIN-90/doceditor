@@ -5,17 +5,19 @@ import {
   MdFormatAlignJustify,
   MdFormatAlignLeft,
   MdFormatAlignRight,
+  MdRedo,
+  MdUndo,
 } from "react-icons/md";
-import { FaRedo, FaRemoveFormat, FaUndo } from "react-icons/fa";
+import {  FaRemoveFormat} from "react-icons/fa";
 import { RiSubscript, RiSuperscript } from "react-icons/ri";
 import { GoListOrdered, GoListUnordered } from "react-icons/go";
 export const icons = [
   {
-    icon: <FaUndo />,
+    icon: <MdUndo />,
     action: "undo",
   },
   {
-    icon: <FaRedo />,
+    icon: <MdRedo />,
     action: "redo",
   },
   {
