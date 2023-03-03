@@ -5,13 +5,19 @@ import {
   MdFormatAlignJustify,
   MdFormatAlignLeft,
   MdFormatAlignRight,
-  MdOutlineFormatColorText,
 } from "react-icons/md";
-import { FaHighlighter, FaRemoveFormat } from "react-icons/fa";
-import { RxFontFamily } from "react-icons/rx";
+import { FaRedo, FaRemoveFormat, FaUndo } from "react-icons/fa";
 import { RiSubscript, RiSuperscript } from "react-icons/ri";
-import { GoListOrdered, GoListUnordered, GoTextSize } from "react-icons/go";
+import { GoListOrdered, GoListUnordered } from "react-icons/go";
 export const icons = [
+  {
+    icon: <FaUndo />,
+    action: "undo",
+  },
+  {
+    icon: <FaRedo />,
+    action: "redo",
+  },
   {
     icon: <BiBold />,
     action: "bold",
@@ -27,23 +33,6 @@ export const icons = [
   {
     icon: <AiOutlineStrikethrough />,
     action: "strikethrough",
-  },
-  {
-    icon: <MdOutlineFormatColorText />,
-    action: "foreColor",
-  },
-  {
-    icon: <GoTextSize />,
-    action: "fontSize",
-  },
-
-  {
-    icon: <FaHighlighter />,
-    action: "backColor",
-  },
-  {
-    icon: <RxFontFamily />,
-    action: "fontName",
   },
   {
     icon: <MdFormatAlignCenter />,
