@@ -25,7 +25,10 @@ export default function Navbar() {
     } else if (element.action === "fontName") {
       setShowFontName(!showFontName ? true : false);
       document.execCommand("fontName", false, fontName);
-    } else {
+    }else if (element.action === "insertImage") {
+        setShowFontName(!showFontName ? true : false);
+        document.execCommand("insertImage", false, );
+      }else {
       document.execCommand(`${element.action}`);
     }
   }

@@ -3,6 +3,7 @@ import { AiOutlineStrikethrough } from "react-icons/ai";
 import {  MdFormatAlignCenter, MdFormatAlignJustify, MdFormatAlignLeft, MdFormatAlignRight, MdOutlineFormatColorText  } from "react-icons/md";
 import {  FaHeading, FaHighlighter, FaRemoveFormat  } from "react-icons/fa";
 import {  RxFontFamily  } from "react-icons/rx";
+import {  TfiGallery  } from "react-icons/tfi";
 import {  RiSubscript, RiSuperscript } from "react-icons/ri";
 import {  GoListOrdered, GoListUnordered, GoTextSize  } from "react-icons/go";
 export const icons = [
@@ -79,6 +80,10 @@ export const icons = [
     {
       icon :   <RiSubscript />  ,
       action : "subscript"
+    },
+    {
+      icon :   <TfiGallery />  ,
+      action : "insertImage"
     },
   ]
 
