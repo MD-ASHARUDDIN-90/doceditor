@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AiOutlineHighlight } from "react-icons/ai";
-import { BsEmojiSmile, BsLink } from "react-icons/bs";
+import { BsLink } from "react-icons/bs";
 
 import { ImFontSize, ImTextColor } from "react-icons/im";
 import {
@@ -8,6 +8,7 @@ import {
   fontSizeList,
   fontFamilyList,
   emojiList,
+  scaleList,
 } from "../../Fixture/Icons";
 import style from "./Navbar.module.css";
 import { RxImage } from "react-icons/rx";
@@ -15,12 +16,15 @@ import { BiPrinter } from "react-icons/bi";
 export default function Navbar({ printDiv }) {
   const [emoji, setEmoji] = useState("&#128514;");
   const [fontSize, setFontSize] = useState("Font Size");
+  const [scaleSize, setScaleSize] = useState("100%");
   const [fontName, setFontName] = useState("Font Style");
   const [color, setColor] = useState("#000000");
   const [higlightColor, setHiglightColor] = useState("#000000");
 
   const [link, setLink] = useState("");
+  const [image, setImage] = useState("");
   const [show, setShow] = useState(false);
+  const inputRef = useRef();
 
   function handleAction(element) {
     document.execCommand(`${element.action}`);
@@ -48,10 +52,12 @@ export default function Navbar({ printDiv }) {
 
     if (e.target.value === "Smile") {
       document.execCommand("insertHTML", false, "&#128514");
-    } else if (e.target.value === "Thumbs Up") {
+    } else if (e.target.value === "Thumb-Up") {
       document.execCommand("insertHTML", false, "&#128077");
-    } else if (e.target.value === "Thumbs Down") {
+    } else if (e.target.value === "Thumb-Down") {
       document.execCommand("insertHTML", false, "&#128078");
+    }else if(e.target.value === "Kiss"){
+      document.execCommand("insertHTML", false, "&#128536");
     }
     console.log(e.target.value);
   }
@@ -61,25 +67,71 @@ export default function Navbar({ printDiv }) {
     if (value === "link") {
       document.execCommand("createLink", false, link);
     } else {
-      document.execCommand("insertImage", false, link);
+      document.execCommand("insertImage", false, link || image);
+      setImage("");
     }
     setLink("");
   }
+  function handleScale(e) {
+    setScaleSize(e.target.value);
+    if (e.target.value === "100%") {
+      printDiv.current.style.transform = "scale(1,1)";
+    } else if (e.target.value === "150%") {
+      printDiv.current.style.transform = "scale(1.5,1)";
+    } else if (e.target.value === "200%") {
+      printDiv.current.style.transform = "scale(2,1)";
+    } else if (e.target.value === "50%") {
+      printDiv.current.style.transform = "scale(0.65,0.65)";
+    } else if (e.target.value === "25%") {
+      printDiv.current.style.transform = "scale(0.5,0.5)";
+    } else if (e.target.value === "75%") {
+      printDiv.current.style.transform = "scale(0.8,1)";
+    }
+  }
+  // console.log(scaleSize, "scale");
 
   const handlePrint = () => {
-    console.log(printDiv)
+    console.log(printDiv);
     let printContents = printDiv.current.innerHTML;
-    console.log(printContents)
+    console.log(printContents);
     let originalContents = document.body.innerHTML;
     // console.log(originalContents)
     document.body.innerHTML = printContents;
     window.print();
-   document.body.innerHTML = originalContents; 
+    document.body.innerHTML = originalContents;
     // console.log(originalContents)
   };
+
+  function handleImageOpen() {
+    inputRef.current.click();
+  }
+  function captureImage(event) {
+    if (event.target.files[0]) {
+      console.log(event.target.files[0]);
+      document.execCommand(
+        "insertImage",
+        "",
+        URL.createObjectURL(event.target.files[0])
+      );
+    }
+  }
+
   return (
     <>
       <div className={style.wrapper}>
+        <div className={style.fontStyleBox}>
+          <select
+          style={{width:"100%"}}
+            className={style.fontStyle}
+            id="fontStyle"
+            onChange={handleScale}
+          >
+            <option>{scaleSize}</option>
+            {scaleList.map((x) => (
+              <option key={x}>{x}</option>
+            ))}
+          </select>
+        </div>
         <button onClick={handlePrint}>
           <BiPrinter />
         </button>
@@ -89,8 +141,8 @@ export default function Navbar({ printDiv }) {
           </button>
         ))}
 
-        <div className={style.fontStyleBox}>
-          <select onChange={handleEmoji}>
+        <div  className={style.fontStyleBox}>
+          <select  className={style.fontStyle}  onChange={handleEmoji}>
             <option>Emoji</option>
             {emojiList.map((x, i) => (
               <option key={i}>{x.icon}</option>
@@ -156,9 +208,9 @@ export default function Navbar({ printDiv }) {
             <BsLink />
           </label>
         </button>
-        <button onClick={() => handleOpen("insertImage")}>
+        <button>
           <label htmlFor="link">
-            <RxImage />
+            <RxImage onClick={handleImageOpen} />
           </label>
         </button>
 
@@ -182,6 +234,7 @@ export default function Navbar({ printDiv }) {
       ) : (
         ""
       )}
+      <input ref={inputRef} hidden onChange={captureImage} type="file" />
     </>
   );
 }

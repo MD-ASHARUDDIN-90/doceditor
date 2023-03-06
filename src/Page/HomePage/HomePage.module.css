@@ -19,8 +19,25 @@
     position: fixed;
     width: 100%;
     top: 0;
-  
+    z-index: 999;
 }
+.title{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid; */
+    justify-content: space-between;
+    width: 15%;
+}
+.input{
+    border: none;
+    font-size: 1.2rem;
+    width: 80%;
+    text-align: center;
+    outline: none;
+}
+/* .input:focus{
+    outline: 2px solid rgb(62, 127, 255);
+} */
 body{
     background-color: rgb(190, 186, 186,0.3); 
 }
