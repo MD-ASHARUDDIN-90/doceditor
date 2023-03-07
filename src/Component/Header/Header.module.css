@@ -1,0 +1,76 @@
+.main{
+    display: flex;
+    height: 5vh;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: white;
+    /* border: 1px solid; */
+    justify-content: space-between;
+}
+.titleBox{
+    display: flex;
+    gap: 1rem;
+}
+.input{
+    border: none;
+    font-size: 1.2rem;
+    width: 70%;
+    /* text-align: center; */
+    outline: none;
+    
+}
+
+.icon{
+    font-size: 3rem;
+     color: rgb(62, 127, 255);
+ }
+ .menu{
+    display: flex;
+    /* border: 1px solid; */
+    width: 20rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 4vh;
+  
+    font-size: 0.9rem;
+ }
+ .menu p {
+    /* border: 1px solid; */
+    padding: 0.2rem;
+    cursor: pointer;
+    border-radius: 10%;
+ }
+ .menu p:hover{
+    background-color: rgba(170, 170, 170, 0.274);
+ }
+.profileDiv{
+    /* border: 1px solid; */
+    float: right;
+    display: flex;
+    /* border: 1px solid; */
+    width: 8%;
+    justify-content: space-between;
+}
+ .profile{
+    font-size: 2.5rem;  
+ }
+ .share{
+    font-size: 2.5rem;
+    color: rgb(62, 127, 255);
+    
+ }
+
+ @media screen and (max-width : 700px) {
+   .menu{
+    display: none;
+   }
+   .icon{
+    font-size: 2rem;
+     color: rgb(62, 127, 255);
+ }
+ .profileDiv{
+    /* border: 1px solid; */
+    width: 15%;
+ }
+ 
+  }

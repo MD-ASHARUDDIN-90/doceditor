@@ -9,9 +9,8 @@ import {
   MdUndo,
 } from "react-icons/md";
 import { FaRemoveFormat } from "react-icons/fa";
-import { RiSubscript, RiSuperscript } from "react-icons/ri";
+import { RiIndentDecrease, RiIndentIncrease, RiSubscript, RiSuperscript } from "react-icons/ri";
 import { GoListOrdered, GoListUnordered } from "react-icons/go";
-import { BsEmojiSmile } from "react-icons/bs";
 export const icons = [
   {
     icon: <MdUndo />,
@@ -73,6 +72,14 @@ export const icons = [
     icon: <FaRemoveFormat />,
     action: "removeFormat",
   },
+  {
+    icon: <RiIndentIncrease />,
+    action: "indent",
+  },
+  {
+    icon: <RiIndentDecrease />,
+    action: "outdent",
+  },
 ];
 
 export const fontSizeList = [1, 2, 3, 4, 5, 6, 7];
@@ -113,6 +120,18 @@ export const emojiList = [
   {
     icon : "Kiss",
     value : "&#128536",
+  } ,
+  {
+    icon : "OK",
+    value : "&#1F44C",
+  } ,
+  {
+    icon : "Angry",
+    value : "&#128545",
+  } ,
+  {
+    icon : "Heart",
+    value : "&#1F496",
   } ,
 ];
 

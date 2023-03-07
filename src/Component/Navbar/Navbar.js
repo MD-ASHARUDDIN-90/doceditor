@@ -20,9 +20,7 @@ export default function Navbar({ printDiv }) {
   const [fontName, setFontName] = useState("Font Style");
   const [color, setColor] = useState("#000000");
   const [higlightColor, setHiglightColor] = useState("#000000");
-
   const [link, setLink] = useState("");
-  const [image, setImage] = useState("");
   const [show, setShow] = useState(false);
   const inputRef = useRef();
 
@@ -56,8 +54,14 @@ export default function Navbar({ printDiv }) {
       document.execCommand("insertHTML", false, "&#128077");
     } else if (e.target.value === "Thumb-Down") {
       document.execCommand("insertHTML", false, "&#128078");
-    }else if(e.target.value === "Kiss"){
+    } else if (e.target.value === "Kiss") {
       document.execCommand("insertHTML", false, "&#128536");
+    } else if (e.target.value === "Angry") {
+      document.execCommand("insertHTML", false, "&#128545");
+    } else if (e.target.value === "OK") {
+      document.execCommand("insertHTML", false, "&#128076");
+    } else if (e.target.value === "Heart") {
+      document.execCommand("insertHTML", false, "&#128150");
     }
     console.log(e.target.value);
   }
@@ -66,10 +70,7 @@ export default function Navbar({ printDiv }) {
     setShow(!show ? true : false);
     if (value === "link") {
       document.execCommand("createLink", false, link);
-    } else {
-      document.execCommand("insertImage", false, link || image);
-      setImage("");
-    }
+    } 
     setLink("");
   }
   function handleScale(e) {
@@ -121,7 +122,7 @@ export default function Navbar({ printDiv }) {
       <div className={style.wrapper}>
         <div className={style.fontStyleBox}>
           <select
-          style={{width:"100%"}}
+            style={{ width: "100%" }}
             className={style.fontStyle}
             id="fontStyle"
             onChange={handleScale}
@@ -141,8 +142,8 @@ export default function Navbar({ printDiv }) {
           </button>
         ))}
 
-        <div  className={style.fontStyleBox}>
-          <select  className={style.fontStyle}  onChange={handleEmoji}>
+        <div className={style.fontStyleBox}>
+          <select className={style.fontStyle} onChange={handleEmoji}>
             <option>Emoji</option>
             {emojiList.map((x, i) => (
               <option key={i}>{x.icon}</option>

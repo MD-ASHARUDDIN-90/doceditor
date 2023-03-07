@@ -88,7 +88,7 @@ select {
 .fontStyleBox{
     border-left:1px solid rgb(122, 122, 122);
     border-right:1px solid rgb(126, 126, 126);
-    border-radius: 5%;
+    /* border-radius: 5%; */
     cursor: pointer;
 }
 .fontStyleBox:hover{
@@ -112,4 +112,19 @@ select:hover {
 
 .wrapper span {
   font-size: 1.1rem;
+}
+
+@media screen and (max-width : 700px) {
+  .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+   /* position: absolute; */
+  /* border: 1px solid; */
+   /* top: 20rem; */
+   height: 20vh;
+
+  }
+  .fontStyleBox{
+    display: none;
+  }
 }

@@ -6,9 +6,10 @@ import { AiFillStar } from "react-icons/ai";
 import jsPDF from "jspdf";
 import { BsDownload } from "react-icons/bs";
 import html2canvas from "html2canvas";
+import Header from "../../Component/Header/Header";
 
 export default function HomePage() {
-  const [color, setColor] = useState("black");
+ 
   const printDiv = useRef("");
   const [title, setTitle] = useState("Untitled Document");
 
@@ -29,25 +30,12 @@ export default function HomePage() {
   return (
     <>
       <div className={style.download} onClick={downloadPDF}>
-        <BsDownload className={style.downloadBtn} />
+        <BsDownload id="btnDown" className={style.downloadBtn} />
       </div>
       <div className={style.main}>
         <div className={style.upperNav}>
-          <div className={style.subMain}>
-            <IoDocumentTextSharp className={style.icon} />
-            <div className={style.title}>
-            <input
-              value={title}
-              className={style.input}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <AiFillStar
-              onClick={() => setColor(color === "black" ? "red" : "black")}
-              style={{ color: color, fontSize: "1.2rem" }}
-            />
-            </div>
-          </div>
-
+         
+<Header title={title} setTitle={setTitle}/>
           <Navbar printDiv={printDiv} />
         </div>
         <div className={style.wrapper}>
